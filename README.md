@@ -19,8 +19,10 @@ From the root of the Git repository (the same directory as where this `README.md
 
 Docker will take a few minutes to download the relevant base image and configure it to our needs. If the build was successful, you should see message similar to the below:
 
-```Successfully built <id>
-Successfully tagged sudochop/privesc:latest```
+```
+Successfully built <id>
+Successfully tagged sudochop/privesc:latest
+```
 
 If you list your Docker images, you should also see the newly-built image present:
 
