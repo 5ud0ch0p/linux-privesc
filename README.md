@@ -76,8 +76,10 @@ If you also want to remove the image we created previously:
 
 If you remove the image, then create a new image and subsequent containers in the same manner and attempt SSH on the same port, you may receive an error that states something similar to the below:
 
-```ECDSA host key for [localhost]:2222 has changed and you have requested strict checking.
-Host key verification failed.```
+```
+ECDSA host key for [localhost]:2222 has changed and you have requested strict checking.
+Host key verification failed.
+```
 
 This is basically due to the Docker image build script regenerating SSH keys on each creation. As these have now changed, we need to tell our host to forget about the old key:
 
