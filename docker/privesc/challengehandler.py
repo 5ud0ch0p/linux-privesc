@@ -13,6 +13,13 @@ def configurechallenge(chall, difficulty):
             challenge1.configurelevel2()
         elif difficulty == 3:
             challenge1.configurelevel3()
+    if chall == 2:
+        if difficulty == 1:
+            challenge2.configurelevel1()
+        elif difficulty == 2:
+            challenge2.configurelevel2()
+        elif difficulty == 3:
+            challenge2.configurelevel3()
 
 
 def createchallmutex(chall, diff):

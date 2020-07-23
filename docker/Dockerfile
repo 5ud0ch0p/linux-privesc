@@ -11,6 +11,8 @@ RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
 RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ''
 RUN ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ''
 RUN ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ''
+# Allow public-key authentication
+RUN echo 'PubkeyAuthentication   yes' >> /etc/ssh/sshd_config 
 # Daemonise sshd
 CMD ["/usr/sbin/sshd", "-D"]
 
@@ -18,7 +20,7 @@ CMD ["/usr/sbin/sshd", "-D"]
 EXPOSE 22
 
 # Install sudo, crontab, vim, less, netstat/ip to aid in challenges. File, which for usability
-RUN yum install -y sudo cronie vim less net-tools iptools file which gcc python3 telnet
+RUN yum install -y sudo cronie vim less net-tools iptools file which gcc python3 telnet gdb
 
 # Copy over the practical configuration script, and set its permissions appropriately
 COPY ./privesc/ /home/lowpriv/privesc/

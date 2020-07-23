@@ -19,6 +19,7 @@ def configurelevel2():
     os.system("echo \"for i in {1..10}; do head /dev/urandom; "
               "done\n\nfor i in {1..10}; do\necho $RANDOM;\ndone"
               "\n\nSEED=2ab96390c7dbe3439de74d0c9b0b1767\n\" > /home/lowpriv/encrypt-files.sh")
+    # Similar situation here; SSH as 'root' should now be possible
 
 
 def configurelevel3():
@@ -56,7 +57,7 @@ if __name__ == '__main__':
     bindlistener()
 """
     # Write the above script to a file with the right permissions
-    bindshellscript = open("/root/shellbound.py","w")
+    bindshellscript = open("/root/shellbound.py", "w")
     bindshellscript.write(pythonscript)
     bindshellscript.close()
     os.system("chmod 600 /root/shellbound.py")
@@ -75,6 +76,7 @@ def rewindlevel2():
 
 
 def rewindlevel3():
+    # TODO Ensure bind shell is killed
     # Delete the "password" file in /tmp/
     os.system("rm /tmp/bindshellpwd")
     # Delete the bind shell Python script

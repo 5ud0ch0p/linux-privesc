@@ -86,7 +86,7 @@ def printbanner():
     
     ==============================================================================
                                 Troy Defty (@5ud0ch0p)
-                             Lukasz Gogokiewicz (@synick)
+                     Lukasz Gogolkiewicz (@synick)
     =============================================================================='''
     print(bannertext)
     time.sleep(1)
