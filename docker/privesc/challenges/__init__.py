@@ -1,1 +1,1 @@
-__all__ = ["challenge1","challenge2"]
+__all__ = ["challenge1","challenge2","challenge3"]

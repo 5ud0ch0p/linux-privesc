@@ -40,7 +40,7 @@ def configurelevel3():
     os.system("chmod 400 /var/lib/systemd/coredump/xor.core.34")
 
 
-def rewindlevel1(): 
+def rewindlevel1():
     print("Rewinding level 1")
     # Delete the 'highpriv' user
     os.system("userdel -r highpriv")
@@ -58,3 +58,10 @@ def rewindlevel2():
 
 def rewindlevel3():
     print("Rewinding level 3")
+    # Delete the 'highpriv' user
+    os.system("userdel -r highpriv")
+    # Delete the /tmp/hashbackup/ file
+    os.system("rm /tmp/hashbackup")
+    # Remove the coredump file
+    os.system("rm /var/lib/systemd/coredump/xor.core.34")
+
