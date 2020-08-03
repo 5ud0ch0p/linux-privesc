@@ -30,8 +30,6 @@ def configurelevel2():
 
 
 def configurelevel3():
-    print("Configuring level 3")
-    # TODO: Coredump generated and solution works; how to get this into container? Copy over, or generate on container?
     os.system("useradd -ms /bin/bash highpriv -p '$1$ZRaXGLz7$lw1ILV3eoNwS4SRmcHrmQ1'")
     os.system("cp /etc/shadow /tmp/hashbackup")
     os.system("chmod 444 /tmp/hashbackup")
