@@ -31,3 +31,18 @@ def configurelevel3():
     os.system("cp /usr/sbin/visudo /home/highpriv/.backup/admin/visudo")
     # Give new visudo suid privs
     os.system("chmod u+s /home/highpriv/.backup/admin/visudo")
+
+
+def rewindlevel1():
+    os.system("rm /srv/tools/runas")
+
+
+def rewindlevel2():
+    os.system("chmod u-s /usr/bin/vim")
+
+
+def rewindlevel3():
+    # Remove our new user and homedir
+    os.system("userdel -r highpriv")
+    # Remove newly-created files
+    os.system("rm /tmp/find")
