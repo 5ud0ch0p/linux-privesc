@@ -20,7 +20,7 @@ CMD ["/usr/sbin/sshd", "-D"]
 EXPOSE 22
 
 # Install sudo, crontab, vim, less, netstat/ip to aid in challenges. File, which for usability
-RUN yum install -y sudo cronie vim less net-tools iptools file which gcc python3 telnet gdb
+RUN yum install -y sudo cronie vim less net-tools iptools file which gcc python3 telnet gdb bc
 
 # Copy over the practical configuration script, and set its permissions appropriately
 COPY ./privesc/ /home/lowpriv/privesc/
