@@ -14,13 +14,13 @@ RUN ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ''
 # Allow public-key authentication
 RUN echo 'PubkeyAuthentication   yes' >> /etc/ssh/sshd_config 
 # Daemonise sshd
-CMD ["/usr/sbin/sshd", "-D"]
+#CMD ["/usr/sbin/sshd", "-D"]
 
 # Expose the SSH port to the network
 EXPOSE 22
 
 # Install sudo, crontab, vim, less, netstat/ip to aid in challenges. File, which for usability
-RUN yum install -y sudo cronie vim less net-tools iptools file which gcc python3 telnet gdb bc
+RUN yum install -y sudo cronie vim less net-tools iptools file which gcc python3 telnet gdb bc tcpdump vsftpd ftp
 
 # Copy over the practical configuration script, and set its permissions appropriately
 COPY ./privesc/ /home/lowpriv/privesc/
@@ -33,4 +33,6 @@ RUN gcc /home/lowpriv/privesc/suid-wrapper/wrapper.c -o /home/lowpriv/config-pri
 RUN chmod u+s /home/lowpriv/config-privescs
 
 # Run and daemonise cron - TO TEST
-# RUN /usr/sbin/crond
+#CMD ["/usr/sbin/crond"]
+RUN chmod 700 /home/lowpriv/privesc/service-starter/start.sh
+CMD ["/home/lowpriv/privesc/service-starter/start.sh"]
