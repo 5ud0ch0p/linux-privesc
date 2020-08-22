@@ -35,4 +35,6 @@ RUN chmod u+s /home/lowpriv/config-privescs
 # Run and daemonise cron - TO TEST
 #CMD ["/usr/sbin/crond"]
 RUN chmod 700 /home/lowpriv/privesc/service-starter/start.sh
-CMD ["/home/lowpriv/privesc/service-starter/start.sh"]
+RUN /usr/sbin/crond &
+RUN /usr/sbin//usr/sbin/sshd -D &
+#CMD ["/home/lowpriv/privesc/service-starter/start.sh"]
