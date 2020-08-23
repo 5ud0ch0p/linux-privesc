@@ -7,7 +7,7 @@ This repository contains content delivered as part of a workshop at AusCERT 2020
 
 ## Before You Start - IMPORTANT
 
-Every effort has been made to ensure these labs to run cross platform (Mac, Linux, Windows). The labs run smoothly on Mac and Linux, but Docker for Windows is a fussy and may have a few issues. Since the labs have been created using Linux, there is a known issue with Windows and CRLF. So you will need to set this globally in your git config:
+Every effort has been made to ensure these labs to run cross platform (Mac, Linux, Windows). The labs run smoothly on Mac and Linux, but Docker for Windows is fussy and may have a few issues. Since the labs have been created using Linux, there is a known issue with Windows and CRLF. So you will need to set this globally in your git config:
 
 ```git config --global core.autocrlf input```
 
