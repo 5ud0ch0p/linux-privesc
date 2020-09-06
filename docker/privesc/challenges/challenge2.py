@@ -19,6 +19,8 @@ def configurelevel1():
 
 
 def configurelevel2():
+    rewindlevel1();
+    rewindlevel3();
     # Create the SSH pubkey-based authentication folder/file structure
     os.system("mkdir /root/.ssh")
     os.system("touch /root/.ssh/authorized_keys")
@@ -30,6 +32,9 @@ def configurelevel2():
 
 
 def configurelevel3():
+    # Force rewind after each challenge
+    rewindlevel1();
+    rewindlevel2();
     os.system("useradd -ms /bin/bash highpriv -p '$1$ZRaXGLz7$lw1ILV3eoNwS4SRmcHrmQ1'")
     os.system("cp /etc/shadow /tmp/hashbackup")
     os.system("chmod 444 /tmp/hashbackup")
