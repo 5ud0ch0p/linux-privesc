@@ -25,6 +25,11 @@ RUN yum install -y sudo cronie vim less net-tools iptools file which gcc python3
 # Copy over the practical configuration script, and set its permissions appropriately
 COPY ./privesc/ /home/lowpriv/privesc/
 
+# Prevent unintended privesc vectors for some challenges
+RUN chmod 700 /home/lowpriv/privesc/challenges/files/logcleaner
+RUN chmod 700 /home/lowpriv/privesc/challenges/files/usercounter
+RUN chmod 700 /home/lowpriv/privesc/challenges/files/utils
+
 # Install the python script requirements with pip
 RUN pip3 install -r /home/lowpriv/privesc/requirements.txt
 
@@ -32,7 +37,6 @@ RUN pip3 install -r /home/lowpriv/privesc/requirements.txt
 RUN gcc /home/lowpriv/privesc/suid-wrapper/wrapper.c -o /home/lowpriv/config-privescs
 RUN chmod u+s /home/lowpriv/config-privescs
 
-# Run and daemonise cron - TO TEST
-#CMD ["/usr/sbin/crond"]
 RUN chmod 700 /home/lowpriv/privesc/service-starter/start.sh
 CMD ["/home/lowpriv/privesc/service-starter/start.sh"]
+

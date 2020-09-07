@@ -55,6 +55,13 @@ def configurechallenge(chall, difficulty):
             challenge7.configurelevel2()
         elif difficulty == 3:
             challenge7.configurelevel3()
+    if chall == 8:
+        if difficulty == 1:
+            challenge8.configurelevel1()
+        elif difficulty == 2:
+            challenge8.configurelevel2()
+        elif difficulty == 3:
+            challenge8.configurelevel3()
 
 
 def createchallmutex(chall, diff):
@@ -63,6 +70,7 @@ def createchallmutex(chall, diff):
     tempf.close()
 
 
+# TODO: Implement global roll-back
 # TODO: Test this
 def teardownchallenge(chall, difficulty):
     if chall == 1:

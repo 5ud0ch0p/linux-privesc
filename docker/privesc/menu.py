@@ -5,7 +5,7 @@ import challengehandler
 import time
 import sys
 
-CHALLCOUNT = 10
+CHALLCOUNT = 9
 
 
 # Initialise and print our banner, and start the menu itself
@@ -57,6 +57,7 @@ def handlemenu():
                                         submenu=difficulty_submenu,
                                         menu=usermenu)
         usermenu.append_item(diff_submenu_item)
+        # TODO: Add final challenge set as different menu item
     # TODO: Add option to unconfigure all practicals
     # Render the menu
     usermenu.show()
