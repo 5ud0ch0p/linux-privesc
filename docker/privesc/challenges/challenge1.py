@@ -63,21 +63,3 @@ if __name__ == '__main__':
     os.system("chmod 600 /root/shellbound.py")
     # And start the bind shell in the background
     subprocess.Popen("python3 /root/shellbound.py", shell=True)
-
-
-def rewindlevel1():
-    # Roll back shadow
-    os.system("mv /etc/shadow.bak /etc/shadow")
-
-
-def rewindlevel2():
-    # Roll back shadow
-    os.system("mv /etc/shadow.bak /etc/shadow")
-
-
-def rewindlevel3():
-    # TODO Ensure bind shell is killed
-    # Delete the "password" file in /tmp/
-    os.system("rm /tmp/bindshellpwd")
-    # Delete the bind shell Python script
-    os.system("rm /root/shellbound.py")

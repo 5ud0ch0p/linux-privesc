@@ -28,24 +28,3 @@ def configurelevel3():
     os.system("echo 'lowpriv ALL=(ALL) /usr/bin/cat' > /etc/sudoers.d/lowpriv")
     # Highpriv is passwd to /bin/find as root
     os.system("echo 'highpriv ALL=(ALL) /usr/bin/find' > /etc/sudoers.d/highpriv")
-
-
-def rewindlevel1():
-    # Remove the sudoers file we created
-    os.system("rm /etc/sudoers.d/10-lowpriv")
-
-
-def rewindlevel2():
-    # Remove our newly-created directory and all files
-    os.system("rm -r /home/highpriv/.creds/")
-    # De-configure sudoers
-    os.system("rm /etc/sudoers.d/*")
-    # Remove our highpriv user
-    os.system("userdel -r highpriv")
-
-
-def rewindlevel3():
-    # Remove our created user
-    os.system("userdel -r highpriv")
-    # Remove our sudo configs
-    os.system("rm /etc/sudoers.d/*")

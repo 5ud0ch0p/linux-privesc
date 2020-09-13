@@ -58,7 +58,13 @@ In the user's home directory, there should be an executable named '`config-prive
 
 ```./config-privescs``` 
 
-## Rolling-back a practical exercise
+## Rebuilding the container
+
+Once you have configured a practical and want to go back to a clean 'image', this can be done by exiting SSH, and running the following one-liner (which basically removes and creates a new container from our previously-built image). When run, you'll be prompted for the `lowpriv` password again:
+
+```docker container stop linuxprivesc && docker container rm linuxprivesc && docker run -d --name linuxprivesc -p 2222:22 sudochop/privesc && ssh lowpriv@localhost -p 2222```
+
+If you have used different tags, etc. in the build process this far, remember to amend these in the command above as appropriate.
 
 ## Removing a Docker container
 

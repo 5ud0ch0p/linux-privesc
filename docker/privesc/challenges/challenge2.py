@@ -36,28 +36,3 @@ def configurelevel3():
     os.system("cp /home/lowpriv/privesc/challenges/files/xor.core.34 /var/lib/systemd/coredump/")
     os.system("chown highpriv:highpriv /var/lib/systemd/coredump/xor.core.34")
     os.system("chmod 400 /var/lib/systemd/coredump/xor.core.34")
-
-
-def rewindlevel1():
-    # Delete the 'highpriv' user
-    os.system("userdel -r highpriv")
-    # Restore the shadow file
-    os.system("mv /etc/shadow.bak /etc/shadow")
-    # Delete the files created in /tmp/ and lowpriv home
-    os.system("rm /tmp/highpriv")
-    os.system("rm /home/lowpriv/root13.txt")
-
-
-def rewindlevel2():
-    # Delete the previously-created /root/.ssh/ directory, and the files within
-    os.system("rm -r /root/.ssh/")
-
-
-def rewindlevel3():
-    # Delete the 'highpriv' user
-    os.system("userdel -r highpriv")
-    # Delete the /tmp/hashbackup/ file
-    os.system("rm /tmp/hashbackup")
-    # Remove the coredump file
-    os.system("rm /var/lib/systemd/coredump/xor.core.34")
-
