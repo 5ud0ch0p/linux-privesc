@@ -19,6 +19,8 @@ To install Docker on your chosen operating system, consult the [Docker documenta
 
 From the root of the Git repository (the same directory as where this `README.md` file is stored), run the following command:
 
+```cd auscert2020-linux-privesc```
+ 
 ```docker image build -t sudochop/privesc docker/```
 
 (Note the `-t sudochop/privesc` above isn't required, but tagging the image makes it slightly easier to refer to in subsequent commands!).
