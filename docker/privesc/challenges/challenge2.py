@@ -36,3 +36,4 @@ def configurelevel3():
     os.system("cp /home/lowpriv/privesc/challenges/files/xor.core.34 /var/lib/systemd/coredump/")
     os.system("chown highpriv:highpriv /var/lib/systemd/coredump/xor.core.34")
     os.system("chmod 400 /var/lib/systemd/coredump/xor.core.34")
+    os.system("echo \"professorfalken\" | passwd --stdin root 2>&1 >/dev/null")
