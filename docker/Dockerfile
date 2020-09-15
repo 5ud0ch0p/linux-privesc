@@ -20,7 +20,7 @@ RUN echo 'PubkeyAuthentication   yes' >> /etc/ssh/sshd_config
 EXPOSE 22
 
 # Install sudo, crontab, vim, less, netstat/ip to aid in challenges. File, which for usability
-RUN yum install -y sudo cronie vim less net-tools iptools file which gcc python3 telnet gdb bc tcpdump vsftpd ftp
+RUN yum install -y sudo cronie vim less net-tools iptools file which gcc python3 telnet gdb bc tcpdump vsftpd ftp nc
 
 # Copy over the practical configuration script, and set its permissions appropriately
 COPY ./privesc/ /home/lowpriv/privesc/

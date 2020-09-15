@@ -19,14 +19,20 @@ def configurelevel1():
 
 
 def configurelevel2():
-    # Create the SSH pubkey-based authentication folder/file structure
-    os.system("mkdir /root/.ssh")
+    os.system("mkdir -p /var/temporal-keys/")
+    # Create root keypair with guessable passphrase
+    os.system("ssh-keygen -b 2048 -t rsa -C \"Passphrase is 'supersecure'\" "
+              "-N supersecure -f /var/temporal-keys/temp-key >/dev/null 2>/dev/null")
+    # Make private key world-readable
+    os.system("chmod o+rx /var/temporal-keys/")
+    os.system("chmod o+r /var/temporal-keys/temp-key*")
+    # Add to root SSH authorized_keys
+    os.system("mkdir -p /root/.ssh/")
+    os.system("chmod 755 /root/.ssh/")
     os.system("touch /root/.ssh/authorized_keys")
-    # Allow global write on /root/.ssh/authorized_keys
-    os.system("chmod o+rx /root/")
-    os.system("chmod o+wx /root/.ssh/authorized_keys")
-    # Candidates need to be careful with how they enter their public keys into this file.
-    # Echo with double quotes (") will cause bash to evaluate special characters in their public keys!
+    os.system("chmod 644 /root/.ssh/authorized_keys")
+    os.system("cat /var/temporal-keys/temp-key.pub >> /root/.ssh/authorized_keys")
+
 
 
 def configurelevel3():

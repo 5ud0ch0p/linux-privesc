@@ -31,6 +31,7 @@ def configurelevel2():
     os.system('chown restricted:restricted /home/restricted/.ssh/')
     os.system('chmod 755 /home/restricted/.ssh/')
     os.system('ssh-keygen -f /tmp/restricted -P "" > /dev/null')
+    os.system('chmod o+r /tmp/restricted')
     os.system('cat /tmp/restricted.pub >> /home/restricted/.ssh/authorized_keys')
     os.system('chmod 644 /home/restricted/.ssh/authorized_keys')
     os.system('chown restricted:restricted /home/restricted/.ssh/authorized_keys')
