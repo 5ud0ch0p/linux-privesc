@@ -53,7 +53,6 @@ def checkauth(inputpass):
 
 
 if __name__ == '__main__':
-    print("Binding")
     bindlistener()
 """
     # Write the above script to a file with the right permissions
