@@ -1,6 +1,6 @@
 # Linux Privilege Escalation
 
-This repository contains content delivered as part of a workshop at AusCERT 2020. It includes:
+This repository contains content delivered as part of a workshop at AusCERT 2020 and ComfyCon AU Summer 2020. It includes:
 
 * A Dockerfile used to build a Docker containers to facilitate practical exercises
 * A Python script used to configure the practical exercises within these containers
@@ -19,7 +19,7 @@ To install Docker on your chosen operating system, consult the [Docker documenta
 
 From the root of the Git repository (the same directory as where this `README.md` file is stored), run the following command:
 
-```cd auscert2020-linux-privesc```
+```cd linux-privesc```
  
 ```docker image build -t sudochop/privesc docker/```
 
