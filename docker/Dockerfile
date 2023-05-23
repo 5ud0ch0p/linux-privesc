@@ -1,5 +1,5 @@
-# Build from CentOS systemd-enabled
-FROM centos/systemd
+# Build from OEL
+FROM oraclelinux:8
 # Create our standard login user creds (lowpriv:lowpriv)
 RUN useradd -ms /bin/bash lowpriv -p '$1$FyHfpz/Q$gNjsHMDd3GsjPew.51zfq/'
 
@@ -20,7 +20,7 @@ RUN echo 'PubkeyAuthentication   yes' >> /etc/ssh/sshd_config
 EXPOSE 22
 
 # Install sudo, crontab, vim, less, netstat/ip to aid in challenges. File, which for usability
-RUN yum install -y sudo cronie vim less net-tools iptools file which gcc python3 telnet gdb bc tcpdump vsftpd ftp nc
+RUN yum install -y sudo cronie vim less net-tools file which gcc python3 telnet gdb bc tcpdump vsftpd ftp nc util-linux-user
 
 # Copy over the practical configuration script, and set its permissions appropriately
 COPY ./privesc/ /home/lowpriv/privesc/
@@ -39,4 +39,3 @@ RUN chmod u+s /home/lowpriv/config-privescs
 
 RUN chmod 700 /home/lowpriv/privesc/service-starter/start.sh
 CMD ["/home/lowpriv/privesc/service-starter/start.sh"]
-
