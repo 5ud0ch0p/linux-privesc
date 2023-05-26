@@ -40,11 +40,11 @@ If you list your Docker images, you should also see the newly-built image presen
 
 Now we have our image, we need to create and run a container on top of that image we can interact with:
 
-```docker run -d --name linuxprivesc -p <port>:22 sudochop/privesc```
+```docker run -v /run -d --name linuxprivesc -p <port>:22 --cgroupns=host -v /sys/fs/cgroup:/sys/fs/cgroup:rw sudochop/privesc```
 
 In the above command, choose a `<port>` which is not currently bound as a listener; we will be using this port to SSH into the container. One such port might be TCP 2222 for example:
 
-```docker run -d --name linuxprivesc -p 2222:22 sudochop/privesc```
+```docker run -v /run -d --name linuxprivesc -p 2222:22 --cgroupns=host -v /sys/fs/cgroup:/sys/fs/cgroup:rw sudochop/privesc```
 
 Docker will spit out a long ID value if the container is created successfully. We should also be able to see our new container:
 
@@ -64,7 +64,7 @@ In the user's home directory, there should be an executable named '`config-prive
 
 Once you have configured a practical and want to go back to a clean 'image', this can be done by exiting SSH, and running the following one-liner (which basically removes and creates a new container from our previously-built image). When run, you'll be prompted for the `lowpriv` password again:
 
-```docker container stop linuxprivesc && docker container rm linuxprivesc && docker run -d --name linuxprivesc -p 2222:22 sudochop/privesc && ssh lowpriv@localhost -p 2222```
+```docker container stop linuxprivesc && docker container rm linuxprivesc && docker run -v /run -d --name linuxprivesc -p 2222:22 --cgroupns=host -v /sys/fs/cgroup:/sys/fs/cgroup:rw sudochop/privesc && sleep 1 && ssh lowpriv@localhost -p 2222```
 
 If you have used different tags, etc. in the build process this far, remember to amend these in the command above as appropriate.
 

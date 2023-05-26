@@ -1,5 +1,11 @@
 # Build from OEL
 FROM oraclelinux:8
+
+# Install and run systemd
+RUN yum install -y systemd 
+VOLUME ["/sys/fs/cgroup"]
+CMD ["/usr/sbin/init"]
+
 # Create our standard login user creds (lowpriv:lowpriv)
 RUN useradd -ms /bin/bash lowpriv -p '$1$FyHfpz/Q$gNjsHMDd3GsjPew.51zfq/'
 
@@ -13,9 +19,8 @@ RUN ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ''
 RUN ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ''
 # Allow public-key authentication
 RUN echo 'PubkeyAuthentication   yes' >> /etc/ssh/sshd_config 
-# Daemonise sshd
-#CMD ["/usr/sbin/sshd", "-D"]
-
+# Start sshd via systemd
+RUN systemctl enable sshd
 # Expose the SSH port to the network
 EXPOSE 22
 
@@ -36,6 +41,3 @@ RUN pip3 install -r /home/lowpriv/privesc/requirements.txt
 # Compile our wrapper for the privesc script, chmod it to suid. We need this as we cannot chmod scripts (i.e. those which start with #!)
 RUN gcc /home/lowpriv/privesc/suid-wrapper/wrapper.c -o /home/lowpriv/config-privescs
 RUN chmod u+s /home/lowpriv/config-privescs
-
-RUN chmod 700 /home/lowpriv/privesc/service-starter/start.sh
-CMD ["/home/lowpriv/privesc/service-starter/start.sh"]
