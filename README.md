@@ -1,15 +1,19 @@
 # Linux Privilege Escalation
 
-This repository contains content delivered as part of a workshop at AusCERT 2020 and ComfyCon AU Summer 2020. It includes:
+This repository contains content delivered as part of a workshop at AusCERT 2020, ComfyCon AU Summer 2020, and BSides Las Vegas 2023. It includes:
 
 * A Dockerfile used to build a Docker containers to facilitate practical exercises
 * A Python script used to configure the practical exercises within these containers
 
-## Before You Start - IMPORTANT
+## Pre-requisites
 
-Every effort has been made to ensure these labs to run cross platform (Mac, Linux, Windows). The labs run smoothly on Mac and Linux, but Docker for Windows is fussy and may have a few issues. Since the labs have been created using Linux, there is a known issue with Windows and CRLF. So you will need to set this globally in your git config:
+To run this Docker container, you **need a Linux-based distribution**. We need to mount specific Linux directories for `systemd` to work in the container, so native Windows or MacOS filesystems will not work (as the required paths do not exist).
 
-```git config --global core.autocrlf input```
+Therefore, to run the Docker container as described below, you can either:
+
+* Install Docker on a native Linux distribution (the container was tested on Ubuntu and Debian, so _should_ work on most similar distributions).
+* (For Windows-based hosts) Install Docker under Windows Subsystem for Linux (WSL).
+* Install Docker on a Linux-based virtual machine.
 
 ## Installing Docker
 
