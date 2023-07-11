@@ -35,8 +35,8 @@ def configurelevel2():
     os.system("vsftpd")
     # Set up a cronjob to authenticate to our mock service on local loopback - "login" runs once every minute
     os.system("mkdir -p /var/spool/cron/")
-    os.system("echo '* * * * * (sleep 2; echo -e \"USER root\\nPASS n0pn0pn0pjmp\") |"
-              " telnet localhost 21' > /var/spool/cron/root")
+    os.system("echo '* * * * * (sleep 2; echo -e \"USER admin\"; sleep 1; echo -e \"PASS n0pn0pn0pjmp\") |"
+              " nc localhost 21' > /var/spool/cron/root")
     os.system("chmod 600 /var/spool/cron/root")
 
 
