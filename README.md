@@ -1,6 +1,6 @@
 # Linux Privilege Escalation
 
-This repository contains content delivered as part of a workshop at AusCERT 2020, ComfyCon AU Summer 2020, and BSides Las Vegas 2023. It includes:
+This repository contains content delivered as part of a workshop at AusCERT 2020, ComfyCon AU Summer 2020, BSides Las Vegas 2023, and BSides Melbourne 2023. It includes:
 
 * A Dockerfile used to build a Docker containers to facilitate practical exercises
 * A Python script used to configure the practical exercises within these containers
